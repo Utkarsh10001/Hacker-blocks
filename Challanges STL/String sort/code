@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+bool comp(string a ,string b){
+    if(a.length()>=b.length()){
+            if(a.substr(0,b.length())==b)
+                return 1;
+            else
+                return a<b;
+    }
+    if(b.substr(0,a.length())==a)
+                return 0;
+            else
+                return a<b;
+}
+int main(){
+    int n;
+    cin>>n;
+    vector<string>s(n);
+    for(int i=0;i<n;i++)
+        cin>>s[i];
+    sort(s.begin(),s.end(),comp);
+    for(auto x:s)cout<<x<<"\n";
+    return 0;
+}
