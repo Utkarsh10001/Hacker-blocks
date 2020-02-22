@@ -1,0 +1,42 @@
+/*author Utkarsh*/
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+class hos{
+    public:
+    long long int x,y,d;
+    hos(int a,int b){
+        x=a;
+        y=b;
+        d=x*x+y*y;
+    }
+};
+class classcomp{
+    public:
+        bool operator()(hos a,hos b){
+        return b.d>a.d;
+        }
+};
+int main(){
+    ios_base::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    int q,k;
+    cin>>q>>k;
+    priority_queue<int,vector<hos>,classcomp>pq;
+    while(q--){
+        int t,x,y;
+        cin>>t;
+        if(t==1){
+            cin>>x>>y;
+            hos ne(x,y);
+            if(pq.size()<k)
+                pq.push(ne);
+            else if(pq.top().d>ne.d){
+                pq.pop();
+                pq.push(ne);
+            }
+        }else{
+            cout<<pq.top().d<<"\n";
+        }
+    }
+    return 0;
+}
