@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+bool comp(string a ,string b){
+    if(a.length()>=b.length()){
+            if(a.substr(0,b.length())==b)
+                return 1;
+            else
+                return a<b;
+    }
+    if(b.substr(0,a.length())==a)
+                return 0;
+            else
+                return a<b;
+}
+int main(){
+    int n;
+    cin>>n;
+    vector<int>a(n),b(n);
+    for(int i=0;i<n;i++)
+        cin>>a[i];
+    for(int i=0;i<n;i++)
+        cin>>b[i];
+    int i=0,j=0;
+    int temp;
+    for(;i+j<n;){
+        if(a[i]>b[j]){
+            temp=b[j];
+            j++;
+        }
+        else{
+            temp=a[i];
+            i++;
+            }
+            }
+    cout<<temp;
+    return 0;
+}
