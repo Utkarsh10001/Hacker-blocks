@@ -1,0 +1,89 @@
+#include<iostream>
+
+#include<limits.h>
+
+#include<vector>
+
+#include<algorithm>
+
+using namespace std;
+
+int n;
+
+int in[100001];
+
+vector<int>tree[400001];
+
+void build(int s,int e,int ind){
+
+    if(s==e){
+
+        tree[ind].push_back(in[s]);
+
+        return;
+
+        }
+
+    int m=(s+e)/2;
+
+    build(s,m,ind*2);
+
+    build(m+1,e,ind*2+1);
+
+    merge(tree[2*ind].begin(),tree[2*ind].end(),tree[2*ind+1].begin(),tree[2*ind+1].end(),back_inserter(tree[ind]));
+
+}
+
+int query(int s,int e,int qs,int qe,int ind,int x){
+
+    if(s>e||s>qe||e<qs)
+
+        return 0;
+
+    if(qs<=s&&qe>=e){
+
+            auto it=lower_bound(tree[ind].begin(),tree[ind].end(),x);
+
+            if(it==tree[ind].end())
+
+                return 0;
+
+        return distance(it,tree[ind].end());
+
+    }
+
+    int mid=(s+e)/2;
+
+    return query(s,mid,qs,qe,ind*2,x)+query(mid+1,e,qs,qe,ind*2+1,x);
+
+}
+
+int main(){
+
+	cin>>n;
+
+	for(int i=0;i<n;i++){
+
+        cin>>in[i];
+
+        }
+
+	build(0,n-1,1);
+
+	int q;
+
+	cin>>q;
+
+	for(int i=1;i<=q;i++){
+
+        int x,y,z;
+
+        cin>>x>>y>>z;
+
+        cout<<query(0,n-1,x-1,y-1,1,z)<<"\n";
+
+	}
+
+	return 0;
+
+}
