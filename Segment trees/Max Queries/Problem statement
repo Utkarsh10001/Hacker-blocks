@@ -1,0 +1,31 @@
+
+
+You are given an array A of N elements and Q queries. Each query consists of 3 integers L R K. For each query, you have to find the number of elements Ax1, Ax2,….,Axj>=K, where L<=x1, x2,…xj<=R.
+Input Format
+
+First line contains an integer N, denoting the number of elements in the array A. Next line contains N integers denoting the elements of the array. Next line contains a single integer Q, denoting the number of queries. Next Q lines contains Q queries, consisting of 3 integers each, L R K.
+Constraints
+
+1<=N,Q<=10^5 |Ai|, |K|<=10^9 1<=L, R<=N
+Output Format
+
+Print Q lines, where ith line contains the answer to the ith query.
+Sample Input
+
+5
+1 2 3 4 5
+5
+1 4 1
+1 5 2
+1 5 3
+1 5 4
+1 5 5
+
+Sample Output
+
+4
+4
+3
+2
+1
+
