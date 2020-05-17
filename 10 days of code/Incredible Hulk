@@ -1,0 +1,18 @@
+/*
+卐
+Author : Utkarsh
+Date : 17:05:2020 08:27
+link: https://hack.codingblocks.com/app/practice/6/1038/problem
+*/
+#include<iostream>
+using namespace std;
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+		int n;
+		cin>>n;
+		cout<<__builtin_popcount(n)<<"\n";
+	}
+	return 0;
+}
