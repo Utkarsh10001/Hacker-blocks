@@ -1,0 +1,46 @@
+/*
+卐
+Author : Utkarsh
+Date : 17:05:2020 08:27
+link: https://hack.codingblocks.com/app/practice/6/1042/problem
+*/
+#include<bits/stdc++.h>
+#define ll long long
+#define S second
+#define F first
+using namespace std;
+bool coml(pair<string,int>a,pair<string,int>b){
+    return a.F<b.F;
+    }
+bool comv(pair<string,int>a,pair<string,int>b){
+    return stoi(a.F)<stoi(b.F);
+}
+int main(){
+	int n;
+	cin>>n;
+	cin.ignore();
+	string f[n];
+	for(int i=0;i<n;i++)
+        getline(cin,f[i]);
+    int k;
+    string flip,comp;
+    cin>>k>>flip>>comp;
+    pair<string,int>p[n];
+    for(int i=0;i<n;i++){
+        stringstream ss(f[i]);
+        int h=k;
+        string as;
+        while(h--&&ss>>as);
+        p[i]={as,i};
+    }
+    cout<<"\n";
+    if(comp=="numeric")
+        sort(p,p+n,comv);
+    else
+        sort(p,p+n,coml);
+    if(flip!="false")
+        reverse(p,p+n);
+    for(auto i:p)
+        cout<<f[i.S]<<"\n";
+	return 0;
+}
